@@ -1,0 +1,15 @@
+<div class="absolute left-1/2 transform -translate-x-1/2 mb-[5%] flex scale-[0.9] justify-center">
+  <app-inclinometer [position]="'left'" [style]="'margin-right: -4%'"></app-inclinometer>
+  <app-middle-graduation/>
+  <app-inclinometer [position]="'right'" [style]="'margin-left: -4%'"></app-inclinometer>
+</div>
+<div class="w-full h-full flex justify-center gap-[45%] items-center bg-[#121212] pt-20">
+  <app-counter [unit]="UNITS.KMH" [maxValue]="150"></app-counter>
+  <app-counter [unit]="UNITS.TRS" [maxValue]="5000"></app-counter>
+</div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 min-h-[8rem] min-w-[30rem] bg-[#1a1a1a] rounded-lg">
+
+</div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[13%]">
+  <app-counter [unit]="UNITS.BAR" [maxValue]="12"></app-counter>
+</div>

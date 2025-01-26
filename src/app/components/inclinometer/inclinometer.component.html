@@ -1,0 +1,61 @@
+<div class="relative w-[400px] h-[400px] rotate-[115deg] transform">
+  <svg class="absolute" height="400" width="400">
+    <circle
+      cx="200"
+      cy="200"
+      r="140.5"
+      stroke="#fff"
+      stroke-dasharray="220"
+      stroke-width="10"
+      fill="transparent"
+      filter="url(#shadow)"
+      stroke-dashoffset="-50"
+    />
+    <circle
+      cx="200"
+      cy="200"
+      r="120.5"
+      stroke="#4287f5"
+      stroke-dasharray="189"
+      stroke-width="7"
+      fill="transparent"
+      filter="url(#shadow)"
+      stroke-dashoffset="-43"
+    />
+    <g transform="translate(200, 200)">
+      <g id="graduations">
+        @for (rotation of rightRotations; track $index) {
+          <g [attr.transform]="'rotate( '+rotation+')'">
+            <line x1="0" y1="-145" x2="0" y2="-155" stroke="#fff" stroke-width="2"/>
+            @if (position === 'right') {
+              <text x="0" y="-163" fill="#fff" font-size="12"
+                    text-anchor="middle">{{ getGraduationByIndex($index) }}
+              </text>
+            }
+          </g>
+        }
+        @for (rotation of leftRotations; track $index) {
+          <g [attr.transform]="'rotate( '+rotation+')'">
+            <line x1="0" y1="-145" x2="0" y2="-155" stroke="#fff" stroke-width="2"/>
+            @if (position === 'left') {
+              <text x="0" y="-163" fill="#fff" font-size="12" text-anchor="middle">{{ getGraduationByIndex($index) }}
+              </text>
+            }
+          </g>
+        }
+      </g>
+    </g>
+  </svg>
+  <div
+    class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white -rotate-[115deg]">
+    @if (position === 'right') {
+      <img ngSrc="assets/4x4side.png" alt="inclinometer" class="rotate-animation w-[50%] h-[50%]" height="500" width="500" [style]="'transform: rotate('+degree*1.05+'deg)'"/>
+    } @else {
+      <img ngSrc="assets/4x4front.png" alt="inclinometer" class="rotate-animation w-[30%] h-[30%]" height="500" width="500" [style]="'transform: rotate('+degree*1.05+'deg)'"/>
+    }
+  </div>
+  <div
+    class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white -rotate-[115deg]">
+    <span class="text-[50px] mt-[15rem]">{{ degree }}°</span>
+  </div>
+</div>

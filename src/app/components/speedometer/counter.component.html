@@ -1,0 +1,98 @@
+<div class="relative w-[300px] h-[300px] rotate-[115deg] transform" [style]="'scale: '+unit.scale">
+  <svg
+    class="absolute"
+    height="300"
+    width="300"
+  >
+    <circle
+      cx="150"
+      cy="150"
+      r="140.5"
+      stroke="#fff"
+      stroke-dasharray="520"
+      stroke-width="10"
+      fill="transparent"
+      filter="url(#shadow)"
+    />
+    @if (unit === UNITS.TRS) {
+      <circle
+        cx="150"
+        cy="150"
+        r="140.5"
+        stroke="#ff0000"
+        stroke-dasharray="112, 408"
+        stroke-width="10"
+        fill="transparent"
+        stroke-dashoffset="-408"
+      />
+    }
+    @if (unit === UNITS.BAR) {
+      <circle
+        cx="150"
+        cy="150"
+        r="140.5"
+        stroke="#ff0000"
+        stroke-dasharray="192, 400"
+        stroke-width="10"
+        fill="transparent"
+        stroke-dashoffset="-377"
+      />
+    }
+    <g transform="rotate(90.5 150 150)">
+      @for (gap of calculateSpeedGraduationGaps(); track $index) {
+        @if (unit === UNITS.KMH) {
+          <line x1="150" y1="10" x2="150" [attr.y2]="($index % 2 === 1) ? 25 : 30"
+                stroke-linecap="round"
+                stroke="white"
+                stroke-width="3"
+                [attr.transform]="'rotate('+(225/$count)*$index+' 150 150)'"/>
+          @if ($index % 2 === 0) {
+            <text x="150" y="45" fill="white" font-size="12" text-anchor="middle"
+                  [attr.transform]="'rotate('+(225/$count)*$index+' 150 150)'">{{ gap }}
+            </text>
+          }
+        } @else if (unit === UNITS.TRS) {
+          <line x1="150" y1="10" x2="150" y2="30"
+                stroke-linecap="round"
+                [attr.stroke]="(((250/$count)*$index) > 160) ? 'red' : 'white'"
+                stroke-width="3"
+                [attr.transform]="'rotate('+(250/$count)*$index+' 150 150)'"/>
+          <text x="150" y="45" fill="white" font-size="12" text-anchor="middle"
+                [attr.transform]="'rotate('+(250/$count)*$index+' 150 150)'">{{ gap }}
+          </text>
+        } @else {
+          <line x1="150" y1="10" x2="150" y2="30"
+                stroke-linecap="round"
+                [attr.stroke]="(((250/$count)*$index) > 140) ? 'red' : 'white'"
+                stroke-width="3"
+                [attr.transform]="'rotate('+(250/$count)*$index+' 150 150)'"/>
+          <text x="150" y="45" fill="white" font-size="12" text-anchor="middle"
+                [attr.transform]="'rotate('+(250/$count)*$index+' 150 150)'">{{ gap }}
+          </text>
+        }
+      }
+    </g>
+  </svg>
+  <div class="absolute top-0 left-0 w-full h-full animate-spin-linear transition-transform duration-500"
+       [style]="'transform: rotate(' + barDegree + 'deg)'">
+    <div
+      [class]="'line absolute top-1/2 left-[83%] w-10 h-2 rounded-[3px] ' + (((UNITS.TRS && value >= 4000) || (unit === UNITS.BAR && value > 8)) ? 'bg-[#ff0000]' : 'bg-white')"></div>
+  </div>
+  <div
+    class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white -rotate-[115deg]">
+    <span [class]="'text-[72px] font-bold ' + (((value >= 4000) || (unit === UNITS.BAR && value > 8)) ? 'text-[#ff0000]' : '')">{{ value }}</span>
+    <span class="text-[13px] uppercase tracking-[3px] mt-[5px] flex flex-col text-center">
+      @for (text of unit.unitText.split('\n'); track $index) {
+        <span>{{ text }}</span>
+      }
+    </span>
+  </div>
+  @if (unit === UNITS.KMH) {
+    <div class="absolute top-0 left-0 w-full h-full text-white -rotate-[115deg]">
+      <div
+        class="absolute bottom-[15px] right-[40px] w-[58px] h-[58px] flex items-center justify-center text-center text-[30px] border-2 border-white rounded-full">
+        <span>{{ gearRatio | gearRatio }}</span>
+      </div>
+    </div>
+  }
+</div>
