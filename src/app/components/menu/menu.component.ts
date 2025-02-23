@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {MatButton, MatFabButton} from '@angular/material/button';
+import {Component} from '@angular/core';
+import {MatButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 
 @Component({

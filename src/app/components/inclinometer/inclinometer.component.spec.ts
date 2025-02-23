@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { InclinometerComponent } from './inclinometer.component';
+import {InclinometerComponent} from './inclinometer.component';
 
 describe('InclinometerComponent', () => {
   let component: InclinometerComponent;
@@ -10,7 +10,7 @@ describe('InclinometerComponent', () => {
     await TestBed.configureTestingModule({
       imports: [InclinometerComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(InclinometerComponent);
     component = fixture.componentInstance;

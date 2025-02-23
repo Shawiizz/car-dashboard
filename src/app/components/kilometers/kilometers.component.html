@@ -1,9 +1,12 @@
-<mat-card appearance="outlined">
-  <mat-card-content>
-    <div class="flex flex-col gap-1 uppercase tracking-wider font-extralight text-center">
-      <p>250000km</p>
-      <mat-divider/>
-      <p>800km</p>
+<div class="flex flex-col justify-center min-h-full">
+  <div class="flex flex-col gap-3.5 justify-center min-h-[85%] items-center bg-[#121212] rounded-md py-2">
+    <div class="odometer scale-150" #totalKilometers>
+      000000
     </div>
-  </mat-card-content>
-</mat-card>
+    <mat-divider class="w-[80%]"/>
+    <div class="odometer scale-150" #kilometers>
+      000000
+    </div>
+  </div>
+
+</div>

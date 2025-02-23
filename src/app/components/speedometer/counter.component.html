@@ -80,7 +80,8 @@
   </div>
   <div
     class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white -rotate-[115deg]">
-    <span [class]="'text-[72px] font-bold ' + (((value >= 4000) || (unit === UNITS.BAR && value > 8)) ? 'text-[#ff0000]' : '')">{{ value }}</span>
+    <span
+      [class]="'text-[72px] font-bold ' + (((value >= 4000) || (unit === UNITS.BAR && value > 8)) ? 'text-[#ff0000]' : '')">{{ value }}</span>
     <span class="text-[13px] uppercase tracking-[3px] mt-[5px] flex flex-col text-center">
       @for (text of unit.unitText.split('\n'); track $index) {
         <span>{{ text }}</span>

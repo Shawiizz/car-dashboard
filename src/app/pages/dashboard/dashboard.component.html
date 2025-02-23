@@ -7,8 +7,11 @@
   <app-counter [unit]="UNITS.KMH" [maxValue]="150"></app-counter>
   <app-counter [unit]="UNITS.TRS" [maxValue]="5000"></app-counter>
 </div>
-<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 min-h-[8rem] min-w-[30rem] bg-[#1a1a1a] rounded-lg">
-
+<div
+  class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 min-h-[8rem] min-w-[30rem] bg-[#1a1a1a] rounded-lg grid grid-cols-3 grid-rows-1">
+  <div></div>
+  <app-kilometers/>
+  <div></div>
 </div>
 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[13%]">
   <app-counter [unit]="UNITS.BAR" [maxValue]="12"></app-counter>

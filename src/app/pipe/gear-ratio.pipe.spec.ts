@@ -1,4 +1,4 @@
-import { GearRatioPipe } from './gear-ratio.pipe';
+import {GearRatioPipe} from './gear-ratio.pipe';
 
 describe('GearRatioPipe', () => {
   it('create an instance', () => {
